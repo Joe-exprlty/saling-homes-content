@@ -1,0 +1,22 @@
+CITY GUIDE CROSS-REFERENCE MATRIX: Which Cities Link to Which Neighbors,,,,,,,,,,,,,,,
+"When you publish a city guide, add cross-links to every neighbor marked with an X. Then go to each neighbor's guide and add a reciprocal link back. This ensures every guide strengthens its neighbors. An X means these cities should link to each other.",,,,,,,,,,,,,,,
+,TIG,TUA,BEA,LAK,HIL,WES,SHE,ORE,HAP,MIL,GLA,CLA,GRE,ALO,FOR
+Tigard,-,X,X,X,,,X,,,,,,,,
+Tualatin,X,-,,X,,X,X,,,,,,,,
+Beaverton,X,,-,,X,,,,,,,,,X,
+Lake Oswego,X,X,,-,,X,,,,,,,,,
+Hillsboro,,,X,,-,,,,,,,,,X,X
+West Linn,,X,,X,,-,,X,,,X,,,,
+Sherwood,X,X,,,,,-,,,,,,,,
+Oregon City,,,,,,X,,-,,X,X,X,,,
+Happy Valley,,,,,,,,,-,X,,X,X,,
+Milwaukie,,,,,,,,X,X,-,X,X,,,
+Gladstone,,,,,,X,,X,,X,-,,,,
+Clackamas,,,,,,,,X,X,X,,-,,,
+Gresham,,,,,,,,,X,,,,-,,
+Aloha,,,X,,X,,,,,,,,,-,
+Forest Grove,,,,,X,,,,,,,,,,-
+LEGEND,,,,,,,,,,,,,,,
+X (green),These two cities are geographic neighbors and should cross-link in their city guides,,,,,,,,,,,,,,
+- (black),Same city (diagonal),,,,,,,,,,,,,,
+(empty),"Not adjacent. Do not force a cross-link unless a blog post naturally connects them (e.g., a comparison post)",,,,,,,,,,,,,,

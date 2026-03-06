@@ -1,0 +1,1804 @@
+<!--
+=============================================================
+  SALING HOMES — NEIGHBORHOOD GUIDE HTML TEMPLATE
+  Version 1.0 | February 2026
+  sellingpdxhomes.com | Joe Saling | Saling Homes at eXp Realty
+=============================================================
+
+  HOW TO USE THIS FILE
+  Find the component you need, copy its structure, fill in
+  neighborhood-specific content only. Do not recreate
+  components from memory. Do not introduce new CSS classes.
+
+  KEY DIFFERENCE FROM CITY GUIDE TEMPLATE
+  Conditional sections are marked clearly. If Phase 1 did
+  not confirm genuine content for that section, delete the
+  entire section block and replace with the one-line link
+  alternative shown in the comment above each block.
+
+  COMPONENT INDEX
+  01. Schema Markup (HEAD INJECTION)
+  02. Google Fonts + CSS Variables
+  03. Progress Bar
+  04. Internal Navigation Bar
+  05. Hero Section
+  06. Parent City Guide Callout (required)
+  07. Neighborhood Snapshot Box (compact)
+  08. Section Wrapper Pattern
+  09. Editorial Image (placeholder + real)
+  10. What You Get for Your Money
+  11. Schools Section
+  12. Daily Life and Walkability
+  13. Parks and Trails (CONDITIONAL)
+  14. Neighborhood Character
+  15. Community Life (CONDITIONAL)
+  16. How This Neighborhood Compares
+  17. Joe's Take (two paragraphs)
+  18. Start Your Search CTA
+  19. Site-Wide Link Block
+  20. Footer Navigation Bar
+  21. EHO Bar
+  22. Back to Top Link
+
+  LOFTY NOTES
+  - Schema goes in Lofty HEAD INJECTION field, not body
+  - All viewBox attributes are lowercase
+  - Dark sections use margin fix: margin-left/right -20px
+  - Images use fixed 320px width, not percentages
+=============================================================
+-->
+
+
+<!-- ============================================================
+     01. SCHEMA MARKUP
+     PASTE INTO LOFTY HEAD INJECTION — NOT IN BODY
+     Update: addressLocality to parent city name
+     Update: knowsAbout with neighborhood-specific terms
+     Include FAQPage schema ONLY if FAQ accordion is on page
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://www.sellingpdxhomes.com/#agent",
+      "name": "Joe Saling",
+      "alternateName": "Saling Homes",
+      "url": "https://www.sellingpdxhomes.com",
+      "telephone": "+15039107364",
+      "email": "joe@sellingpdxhomes.com",
+      "image": "https://www.sellingpdxhomes.com/joe-saling-headshot.webp",
+      "description": "Joe Saling is a Portland metro real estate agent with 10+ years of experience helping buyers find the right neighborhood in Washington County and surrounding communities.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "[PARENT CITY NAME]",
+        "addressRegion": "OR",
+        "addressCountry": "US"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "[Neighborhood Name], [Parent City Name], Oregon"
+      },
+      "knowsAbout": [
+        "[Neighborhood Name] [Parent City] Oregon real estate",
+        "[Neighborhood Name] homes for sale",
+        "[Parent City Name] Oregon homes",
+        "[Elementary School Name] school boundary",
+        "[Middle School Name]",
+        "[High School Name]",
+        "[Any neighborhood-specific term: trail name, community feature, price characteristic]"
+      ],
+      "memberOf": {
+        "@type": "Organization",
+        "name": "eXp Realty"
+      }
+    }
+  ]
+}
+</script>
+
+
+<!-- ============================================================
+     02. GOOGLE FONTS + CSS VARIABLES
+     Paste into Lofty HEAD INJECTION or top of body block
+     ============================================================ -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* === ROOT VARIABLES — DO NOT ALTER BETWEEN BUILDS === */
+:root {
+  --gold: #C9A84C;
+  --gold-rich: #D4AF37;
+  --gold-light: #C9952A;
+  --gold-pale: #FBF5E6;
+  --near-black: #222222;
+  --text-body: #444444;
+  --text-muted: #767676;
+  --border: #E2DDD6;
+  --bg-soft: #F7F5F2;
+}
+
+/* === BASE === */
+.sh-guide {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: var(--text-body);
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.sh-guide h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--near-black);
+  line-height: 1.2;
+  margin: 0 0 8px 0;
+}
+
+.sh-guide h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--near-black);
+  margin: 0 0 8px 0;
+}
+
+.sh-guide h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--near-black);
+  margin: 0 0 4px 0;
+}
+
+.sh-guide p { margin: 0 0 1.2em 0; }
+
+.sh-guide a {
+  color: var(--gold-light);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.sh-guide a:hover { border-bottom-color: var(--gold); }
+
+.gold-rule {
+  width: 60px;
+  height: 3px;
+  background: var(--gold-rich);
+  margin: 0 0 28px 0;
+  border: none;
+}
+
+.section-label {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* === LOFTY DARK SECTION FIX === */
+.sh-dark-section {
+  background: linear-gradient(160deg, #1a1a1a 0%, #222222 60%, #2a2a2a 100%);
+  margin-left: -20px;
+  margin-right: -20px;
+  padding: 52px 40px;
+}
+
+@media (max-width: 640px) {
+  .sh-dark-section {
+    margin-left: -12px;
+    margin-right: -12px;
+    padding: 40px 20px;
+  }
+}
+
+/* === SECTION WRAPPER === */
+.sh-section {
+  padding: 52px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.sh-section:last-of-type { border-bottom: none; }
+
+/* === PROGRESS BAR === */
+#sh-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(to right, var(--gold), var(--gold-rich));
+  z-index: 9999;
+  transition: width 0.08s linear;
+  pointer-events: none;
+}
+
+/* === INTERNAL NAV BAR === */
+.sh-nav {
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  padding: 0;
+  margin: 0 -20px 8px -20px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.sh-nav::-webkit-scrollbar { display: none; }
+
+.sh-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0 20px;
+  gap: 0;
+  white-space: nowrap;
+}
+
+.sh-nav li a {
+  display: block;
+  padding: 14px 18px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-body);
+  border-bottom: 2px solid transparent;
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.sh-nav li a:hover {
+  color: var(--gold-light);
+  border-bottom-color: var(--gold);
+}
+
+/* === HERO === */
+.sh-hero {
+  background: linear-gradient(160deg, #1a1a1a 0%, #222222 60%, #2a2a2a 100%);
+  padding: 64px 40px 56px;
+  margin: -20px -20px 0 -20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sh-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.sh-hero-eyebrow {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.sh-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0 0 20px 0;
+}
+
+.sh-hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.sh-hero-sub {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.75);
+  max-width: 640px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.sh-hero-rule {
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  border: none;
+  margin: 24px 0;
+}
+
+@media (max-width: 640px) {
+  .sh-hero { padding: 48px 20px 44px; }
+  .sh-hero h1 { font-size: 2.2rem; }
+}
+
+/* === PARENT CITY CALLOUT === */
+.city-guide-callout {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 28px 0;
+}
+
+.city-guide-callout svg { flex-shrink: 0; }
+
+.city-guide-callout p {
+  font-size: 0.92rem;
+  color: var(--text-body);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.city-guide-callout a {
+  font-weight: 600;
+  color: var(--gold-light);
+}
+
+/* === NEIGHBORHOOD SNAPSHOT BOX (COMPACT) === */
+.nbhd-snapshot {
+  background: linear-gradient(160deg, #1a1a1a 0%, #222222 60%, #2a2a2a 100%);
+  border-left: 4px solid var(--gold);
+  padding: 36px 40px;
+  margin: 36px -20px;
+}
+
+.nbhd-snapshot-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+}
+
+.nbhd-attribution {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+  margin: 0 0 28px 0;
+  font-style: italic;
+}
+
+/* Snapshot uses 3-column grid — narrower than city guide AEO */
+.nbhd-snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 32px;
+}
+
+.nbhd-snapshot-item .value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  display: block;
+  line-height: 1.1;
+}
+
+.nbhd-snapshot-item .label {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  display: block;
+  margin: 4px 0 5px;
+}
+
+.nbhd-snapshot-item .note {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .nbhd-snapshot { padding: 28px 20px; margin: 28px -12px; }
+  .nbhd-snapshot-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 400px) {
+  .nbhd-snapshot-grid { grid-template-columns: 1fr; }
+}
+
+/* === EDITORIAL IMAGE === */
+.img-wrap {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  margin: 0 0 32px 0;
+}
+
+.img-wrap.right { flex-direction: row-reverse; }
+
+.editorial-img {
+  flex: 0 0 320px;
+  width: 320px;
+  max-width: 320px;
+  border: 1px solid var(--border);
+  box-shadow: 6px 6px 0 var(--bg-soft);
+}
+
+.editorial-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.img-placeholder {
+  background: var(--bg-soft);
+  border: 2px dashed var(--gold);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  text-align: center;
+  padding: 24px 20px;
+  gap: 8px;
+}
+
+.ph-icon { opacity: 0.35; }
+
+.ph-label {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.ph-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 200px;
+}
+
+figcaption {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.4;
+  padding: 0 4px;
+}
+
+.img-wrap-text { flex: 1; min-width: 0; }
+
+@media (max-width: 720px) {
+  .img-wrap, .img-wrap.right { flex-direction: column; }
+  .editorial-img { flex: none; width: 100%; max-width: 100%; }
+}
+
+/* === PRICE RANGE BLOCK === */
+.price-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.price-tier {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.price-tier-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.price-tier-range {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--near-black);
+  display: block;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.price-tier p {
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .price-tiers { grid-template-columns: 1fr; }
+}
+
+/* === SCHOOL LIST === */
+.school-list {
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.school-item {
+  display: flex;
+  gap: 20px;
+  padding: 20px 24px;
+  background: var(--bg-soft);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  align-items: flex-start;
+}
+
+.school-level-badge {
+  flex: 0 0 auto;
+  background: var(--near-black);
+  color: var(--gold);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  margin-top: 3px;
+}
+
+.school-body { flex: 1; min-width: 0; }
+
+.school-body h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--near-black);
+  margin: 0 0 6px 0;
+}
+
+.school-ratings {
+  display: flex;
+  gap: 16px;
+  margin: 0 0 8px 0;
+  flex-wrap: wrap;
+}
+
+.school-rating-item {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.school-rating-item strong {
+  color: var(--gold-light);
+  font-weight: 700;
+}
+
+.school-body p {
+  font-size: 0.9rem;
+  color: var(--text-body);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* School boundary edge case callout */
+.boundary-note {
+  background: var(--gold-pale);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  color: var(--text-body);
+  line-height: 1.7;
+}
+
+.boundary-note strong { color: var(--gold-light); }
+
+/* === WALKABILITY STATEMENT === */
+.walkability-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--bg-soft);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin: 20px 0 28px;
+}
+
+.walk-score-badge {
+  flex: 0 0 64px;
+  height: 64px;
+  background: var(--near-black);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.walk-score-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.walk-score-label {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+
+.walkability-text { flex: 1; }
+
+.walkability-text strong {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--near-black);
+  margin-bottom: 4px;
+}
+
+.walkability-text p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* === LOCAL SPOT (dining/coffee in daily life section) === */
+.local-spot {
+  border-left: 3px solid var(--gold);
+  padding: 0 0 0 20px;
+  margin: 0 0 24px 0;
+}
+
+.local-spot h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--near-black);
+  margin: 0 0 6px 0;
+}
+
+.local-spot p {
+  font-size: 0.9rem;
+  color: var(--text-body);
+  margin: 0 0 8px 0;
+  line-height: 1.6;
+}
+
+.local-spot a {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+/* === TRAIL STAT BLOCK (COMPACT) === */
+.trail-stats-compact {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.trail-stat-compact {
+  padding: 20px 16px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+
+.trail-stat-compact:last-child { border-right: none; }
+
+.trail-stat-compact .stat-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+}
+
+.trail-stat-compact .stat-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: block;
+  margin-top: 6px;
+}
+
+@media (max-width: 480px) {
+  .trail-stats-compact { grid-template-columns: 1fr; }
+  .trail-stat-compact { border-right: none; border-bottom: 1px solid var(--border); }
+  .trail-stat-compact:last-child { border-bottom: none; }
+}
+
+/* === CHARACTER GRID === */
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.character-item {
+  padding: 16px 20px;
+  background: var(--bg-soft);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.character-item-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.character-item p {
+  font-size: 0.9rem;
+  color: var(--text-body);
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .character-grid { grid-template-columns: 1fr; }
+}
+
+/* === NEIGHBORHOOD COMPARISON BLOCK === */
+.nbhd-compare {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 24px 0;
+}
+
+.nbhd-compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  min-width: 480px;
+}
+
+.nbhd-compare-table th {
+  background: var(--bg-soft);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+}
+
+.nbhd-compare-table th.featured,
+.nbhd-compare-table td.featured {
+  background: var(--gold-pale);
+  border-left: 2px solid var(--gold);
+  border-right: 2px solid var(--gold);
+  font-weight: 700;
+}
+
+.nbhd-compare-table th.featured {
+  color: var(--gold-light);
+  border-bottom: 2px solid var(--gold);
+}
+
+.nbhd-compare-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-body);
+  vertical-align: middle;
+}
+
+.nbhd-compare-table tr:last-child td { border-bottom: none; }
+.nbhd-compare-table tr:last-child td.featured { border-bottom: 2px solid var(--gold); }
+
+/* === JOE'S TAKE === */
+.joes-take {
+  background: var(--bg-soft);
+  border-left: 4px solid var(--gold);
+  padding: 36px 40px;
+  margin: 36px 0;
+}
+
+.joes-take-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.joes-take h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--near-black);
+  margin: 0 0 20px 0;
+}
+
+.joes-take p {
+  font-size: 1rem;
+  color: var(--text-body);
+  line-height: 1.85;
+  margin: 0 0 1.2em 0;
+}
+
+.joes-take p:last-child { margin-bottom: 0; }
+
+.joes-signature {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* === START YOUR SEARCH CTA === */
+.search-cta {
+  background: linear-gradient(160deg, #1a1a1a 0%, #222222 60%, #2a2a2a 100%);
+  padding: 48px 44px;
+  margin: 0 -20px;
+  text-align: center;
+}
+
+.search-cta h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+}
+
+.search-cta p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.65);
+  max-width: 480px;
+  margin: 0 auto 28px;
+  line-height: 1.7;
+}
+
+.search-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--gold-rich);
+  color: #ffffff;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 14px 32px;
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(212,175,55,0.3);
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-primary:hover {
+  background: #B8961F;
+  transform: translateY(-2px);
+  border-bottom: none;
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 14px 24px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.2);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.search-cta-contact {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+}
+
+.search-cta-contact a { color: var(--gold); }
+
+@media (max-width: 600px) {
+  .search-cta { padding: 40px 20px; margin: 0 -12px; }
+  .search-cta h3 { font-size: 1.5rem; }
+  .search-links { flex-direction: column; align-items: center; }
+}
+
+/* === SITE-WIDE LINK BLOCK === */
+.sh-link-block {
+  padding: 48px 0;
+  border-top: 1px solid var(--border);
+}
+
+.sh-link-block h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--near-black);
+  margin: 0 0 8px 0;
+}
+
+.link-block-rule {
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  border: none;
+  margin: 0 0 28px 0;
+}
+
+.link-block-tier { margin-bottom: 32px; }
+
+.link-block-tier-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 14px;
+}
+
+.link-block-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.link-block-item {
+  display: inline-block;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 9px 18px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-body);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.link-block-item:hover {
+  border-color: var(--gold);
+  color: var(--gold-light);
+  background: #ffffff;
+}
+
+.link-block-item.featured {
+  background: var(--gold-pale);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+/* === FOOTER NAV BAR === */
+.sh-footer-nav {
+  background: var(--near-black);
+  margin: 0 -20px -20px -20px;
+  padding: 28px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 4px;
+  justify-content: center;
+}
+
+.sh-footer-nav a {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  padding: 4px 12px;
+  border-right: 1px solid rgba(255,255,255,0.12);
+  transition: color 0.2s;
+}
+
+.sh-footer-nav a:last-child { border-right: none; }
+.sh-footer-nav a:hover { color: var(--gold); }
+
+@media (max-width: 600px) {
+  .sh-footer-nav { padding: 24px 16px; }
+  .sh-footer-nav a { font-size: 0.75rem; padding: 4px 8px; }
+}
+
+/* === EHO BAR === */
+.eho-bar {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border);
+  padding: 28px 40px;
+  margin: 0 -20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.eho-logo { flex: 0 0 48px; opacity: 0.6; }
+
+.eho-text {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .eho-bar { flex-direction: column; padding: 24px 16px; }
+}
+
+/* === BACK TO TOP === */
+.back-to-top {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 0 0;
+}
+
+.back-to-top a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.back-to-top a:hover { color: var(--gold-light); }
+.back-to-top svg { transition: transform 0.2s; }
+.back-to-top a:hover svg { transform: translateY(-2px); }
+</style>
+
+
+<!-- ============================================================
+     03. PROGRESS BAR
+     ============================================================ -->
+<div id="sh-progress"></div>
+<script>
+(function() {
+  var bar = document.getElementById('sh-progress');
+  if (!bar) return;
+  window.addEventListener('scroll', function() {
+    var s = window.scrollY || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    bar.style.width = (h > 0 ? Math.min((s / h) * 100, 100) : 0) + '%';
+  }, { passive: true });
+})();
+</script>
+
+
+<!-- ============================================================
+     BEGIN PAGE BODY
+     ============================================================ -->
+<div class="sh-guide" id="top">
+
+
+<!-- ============================================================
+     05. HERO SECTION
+     Replace [NEIGHBORHOOD NAME] and [CITY NAME] throughout
+     ============================================================ -->
+<header class="sh-hero">
+  <span class="sh-hero-eyebrow">Neighborhood Guide &mdash; [City Name], Oregon</span>
+  <h1>Living in <em>[Neighborhood Name]</em></h1>
+  <hr class="sh-hero-rule" />
+  <p class="sh-hero-sub">[One sentence that frames the buyer decision for this specific neighborhood. What kind of buyer is this page written for and what makes this neighborhood worth understanding before deciding.]</p>
+</header>
+
+<!-- ============================================================
+     04. INTERNAL NAVIGATION BAR
+     Remove nav items for any conditional section not included
+     ============================================================ -->
+<nav class="sh-nav" aria-label="Page sections">
+  <ul>
+    <li><a href="#snapshot">At a Glance</a></li>
+    <li><a href="#price">Pricing</a></li>
+    <li><a href="#schools">Schools</a></li>
+    <li><a href="#daily-life">Daily Life</a></li>
+    <li><a href="#parks">Parks</a></li><!-- REMOVE if section F not included -->
+    <li><a href="#character">Character</a></li>
+    <li><a href="#community">Community</a></li><!-- REMOVE if section H not included -->
+    <li><a href="#compare">Compare</a></li>
+    <li><a href="#joes-take">Joe's Take</a></li>
+  </ul>
+</nav>
+
+
+<!-- ============================================================
+     A. EDITORIAL HOOK
+     ============================================================ -->
+<section class="sh-section" id="editorial-hook">
+
+  <div class="img-wrap">
+    <figure class="editorial-img" data-photo-id="hero-street">
+      <div class="img-placeholder">
+        <svg class="ph-icon" width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>
+        </svg>
+        <span class="ph-label">Photo Needed</span>
+        <span class="ph-note">Residential street in [Neighborhood Name] — specific construction era, tree canopy, terrain, sidewalk presence</span>
+      </div>
+      <figcaption>A residential street in [Neighborhood Name], [City Name]</figcaption>
+    </figure>
+    <div class="img-wrap-text">
+      <span class="section-label">[Neighborhood Name] &mdash; [City Name], Oregon</span>
+      <h2>[H2 framing the neighborhood's identity and what makes it worth knowing about]</h2>
+      <hr class="gold-rule" />
+      <p>[Paragraph 1: What this neighborhood feels like on the ground. Specific physical details, terrain, street character, the view from a driveway or from the ridge if applicable. No sentence here should be transferable to any other neighborhood in this city.]</p>
+      <p>[Paragraph 2: Who this neighborhood suits and why. Frame around lifestyle and logistics. Include a natural reference to Joe's direct experience with this specific neighborhood.]</p>
+      <p>[Paragraph 3: What makes this neighborhood different from the ones next to it. Concrete and specific.]</p>
+    </div>
+  </div>
+
+  <!-- REQUIRED: Parent city guide callout -->
+  <div class="city-guide-callout">
+    <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
+      <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
+    </svg>
+    <p>For a complete picture of [City Name] including schools district overview, healthcare access, commute times, cost of living, and employer data, read the <a href="/living-in-[city-slug]-oregon">[City Name] city guide</a>. This page focuses specifically on the [Neighborhood Name] neighborhood.</p>
+  </div>
+
+  <div class="back-to-top">
+    <a href="#top">
+      <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+      Back to top
+    </a>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     B. NEIGHBORHOOD SNAPSHOT BOX (COMPACT)
+     ============================================================ -->
+<section class="sh-section" id="snapshot">
+  <span class="section-label">By the Numbers</span>
+  <h2>[Neighborhood Name] &mdash; At a Glance</h2>
+  <hr class="gold-rule" />
+
+  <div class="nbhd-snapshot">
+    <p class="nbhd-snapshot-heading">[Neighborhood Name] &mdash; Neighborhood Snapshot</p>
+    <p class="nbhd-attribution">Data compiled and verified by Joe Saling, Saling Homes at eXp Realty &mdash; [Month Year]</p>
+
+    <div class="nbhd-snapshot-grid">
+      <div class="nbhd-snapshot-item">
+        <span class="value">$[XXX]K &ndash; $[XXX]K</span>
+        <span class="label">Typical Price Range</span>
+        <span class="note">[Above / At / Below] [City Name] median</span>
+      </div>
+      <div class="nbhd-snapshot-item">
+        <span class="value">[Home Type]</span>
+        <span class="label">Dominant Home Type</span>
+        <span class="note">[Single family / Townhome / Mix]</span>
+      </div>
+      <div class="nbhd-snapshot-item">
+        <span class="value">[Era]</span>
+        <span class="label">Construction Era</span>
+        <span class="note">[e.g. 1992 to 2004]</span>
+      </div>
+      <div class="nbhd-snapshot-item">
+        <span class="value">[Score or Description]</span>
+        <span class="label">Walkability</span>
+        <span class="note">[Walk Score if available, or honest description]</span>
+      </div>
+      <div class="nbhd-snapshot-item">
+        <span class="value">[Elementary School Name]</span>
+        <span class="label">Elementary School</span>
+        <span class="note"><a href="[GreatSchools URL]" target="_blank" rel="noopener">GreatSchools</a> &mdash; <a href="[Niche URL]" target="_blank" rel="noopener">Niche</a></span>
+      </div>
+      <div class="nbhd-snapshot-item">
+        <span class="value">[Lot Size / HOA / Feature]</span>
+        <span class="label">[Neighborhood-Specific Data Point]</span>
+        <span class="note">[Source or context]</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-to-top">
+    <a href="#top">
+      <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+      Back to top
+    </a>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     C. WHAT YOU GET FOR YOUR MONEY HERE
+     ============================================================ -->
+<section class="sh-section" id="price">
+  <span class="section-label">Pricing</span>
+  <h2>What $[XXX]K Buys You in [Neighborhood Name]</h2>
+  <hr class="gold-rule" />
+  <p>[Open with the typical price range and how it sits relative to the city median. Is this neighborhood a relative value, at market, or carrying a premium, and what specifically drives that positioning.]</p>
+
+  <div class="price-tiers">
+    <div class="price-tier">
+      <span class="price-tier-label">Entry Level</span>
+      <span class="price-tier-range">$[XXX]K &ndash; $[XXX]K</span>
+      <p>[What a buyer gets at this price point: sq footage range, lot size, garage, yard, home age. Specific enough that a buyer can picture it.]</p>
+    </div>
+    <div class="price-tier">
+      <span class="price-tier-label">Mid Range</span>
+      <span class="price-tier-range">$[XXX]K &ndash; $[XXX]K</span>
+      <p>[What a buyer gets at this price point. Note any meaningful upgrades over entry level: larger lot, updated kitchen, better views, newer construction.]</p>
+    </div>
+    <div class="price-tier">
+      <span class="price-tier-label">Upper Range</span>
+      <span class="price-tier-range">$[XXX]K+</span>
+      <p>[What pushes a home into the upper range here. Views, lot size, finishes, location within the neighborhood.]</p>
+    </div>
+  </div>
+
+  <p>[Note any factors that create price variation within the neighborhood: ridge views vs. flat streets, proximity to the park entrance, school boundary edges, newer vs. older construction pockets.]</p>
+
+  <p><a href="/listing/homes-for-sale/[city-slug]">Browse current listings in [Neighborhood Name] &rarr;</a></p>
+
+  <div class="back-to-top">
+    <a href="#top">
+      <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+      Back to top
+    </a>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     D. SCHOOLS SERVING THIS NEIGHBORHOOD
+     ============================================================ -->
+<section class="sh-section" id="schools">
+  <span class="section-label">Schools</span>
+  <h2>Schools Serving [Neighborhood Name]</h2>
+  <hr class="gold-rule" />
+
+  <div class="img-wrap right">
+    <figure class="editorial-img" data-photo-id="school">
+      <div class="img-placeholder">
+        <svg class="ph-icon" width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+        <span class="ph-label">Photo Needed</span>
+        <span class="ph-note">Exterior of [Elementary School Name]. No students. Natural daylight.</span>
+      </div>
+      <figcaption>[Elementary School Name] &mdash; [City Name], Oregon</figcaption>
+    </figure>
+    <div class="img-wrap-text">
+      <p>[Brief intro: confirm which district serves this neighborhood and link to city guide for district-level stats. Example: "For district-wide graduation rates, per-student spending, and rankings, see the schools section of the <a href='/living-in-[city-slug]-oregon#schools'>[City Name] city guide</a>."]</p>
+
+      <div class="school-list">
+
+        <div class="school-item">
+          <span class="school-level-badge">Elementary</span>
+          <div class="school-body">
+            <h4>[Elementary School Name]</h4>
+            <div class="school-ratings">
+              <span class="school-rating-item">GreatSchools: <strong><a href="[URL]" target="_blank" rel="noopener">[X]/10</a></strong></span>
+              <span class="school-rating-item">Niche: <strong><a href="[URL]" target="_blank" rel="noopener">[Grade]</a></strong></span>
+            </div>
+            <p>[One to two sentences on what distinguishes this school. A specific program, a characteristic, or something a parent would want to know that the rating alone does not tell them.]</p>
+          </div>
+        </div>
+
+        <div class="school-item">
+          <span class="school-level-badge">Middle School</span>
+          <div class="school-body">
+            <h4>[Middle School Name]</h4>
+            <div class="school-ratings">
+              <span class="school-rating-item">GreatSchools: <strong><a href="[URL]" target="_blank" rel="noopener">[X]/10</a></strong></span>
+              <span class="school-rating-item">Niche: <strong><a href="[URL]" target="_blank" rel="noopener">[Grade]</a></strong></span>
+            </div>
+            <p>[Distinguishing program or characteristic.]</p>
+          </div>
+        </div>
+
+        <div class="school-item">
+          <span class="school-level-badge">High School</span>
+          <div class="school-body">
+            <h4>[High School Name]</h4>
+            <div class="school-ratings">
+              <span class="school-rating-item">GreatSchools: <strong><a href="[URL]" target="_blank" rel="noopener">[X]/10</a></strong></span>
+              <span class="school-rating-item">Niche: <strong><a href="[URL]" target="_blank" rel="noopener">[Grade]</a></strong></span>
+            </div>
+            <p>[Distinguishing program or characteristic. IB, CTE, AP, performing arts, athletics.]</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Include boundary note ONLY if a genuine edge case exists -->
+  <div class="boundary-note">
+    <strong>Boundary Note:</strong> [Describe the edge case specifically. Name the dividing road and which schools apply on each side. Example: "Homes north of [Road Name] feed into [School A] while homes south of [Road Name] are served by [School B]. If you are deciding between two homes near this line, verify the specific address at the link below."]
+  </div>
+  <!-- DELETE boundary-note block if no edge case exists -->
+
+  <!-- Private / charter options — include only if genuinely relevant -->
+  <p>[Optional: one sentence on any private, charter, or magnet option nearby that residents commonly use. Delete this paragraph if none apply.]</p>
+
+  <p><a href="[district boundary map URL]" target="_blank" rel="noopener">Look up which schools serve a specific address &rarr;</a></p>
+
+  <div class="back-to-top">
+    <a href="#top">
+      <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+      Back to top
+    </a>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     E. DAILY LIFE AND WALKABILITY
+     If no walkable options exist: delete local-spot blocks
+     and replace with honest one-line link to city guide.
+     ============================================================ -->
+<section class="sh-section" id="daily-life">
+  <span class="section-label">Daily Life</span>
+  <h2>Daily Life in [Neighborhood Name]</h2>
+  <hr class="gold-rule" />
+
+  <!-- Walkability bar — use Walk Score if available, honest description if not -->
+  <div class="walkability-bar">
+    <div class="walk-score-badge">
+      <span class="walk-score-number">[XX]</span>
+      <span class="walk-score-label">Walk Score</span>
+    </div>
+    <div class="walkability-text">
+      <strong>[Walkability descriptor: Car-Dependent / Bikeable / Walkable / Very Walkable]</strong>
+      <p>[One honest sentence on what this score means in practice for a resident of this neighborhood. What can they walk to? What requires a car? Be direct.]</p>
+    </div>
+  </div>
+
+  <p>[Grocery paragraph: name the closest grocery option and drive time. This is the daily life detail that matters most to most buyers. Be specific.]</p>
+
+  <!-- LOCAL SPOTS — include only if Phase 1 confirmed genuine walkable or nearby options -->
+  <!-- If no local spots exist: replace this block with one sentence linking to city guide dining section -->
+
+  <h3>Local Spots</h3>
+
+  <div class="local-spot">
+    <h4>[Coffee Shop or Restaurant Name]</h4>
+    <p>[Two to three sentences. Specific dish or drink. Real vibe. Actual location context — how far from the neighborhood center, what street, what the space feels like. This must be a place residents of this neighborhood would consider their own, not just a place that exists in the broader city.]</p>
+    <a href="[URL]" target="_blank" rel="noopener">Visit website &rarr;</a>
+  </div>
+
+  <div class="local-spot">
+    <h4>[Coffee Shop or Restaurant Name]</h4>
+    <p>[Description]</p>
+    <a href="[URL]" target="_blank" rel="noopener">Visit website &rarr;</a>
+  </div>
+
+  <!-- Add additional local-spot blocks only if genuinely relevant -->
+  <!-- Delete all local-spot blocks and replace with city guide link if no local options exist -->
+
+  <p>For a full picture of dining and shopping near [Neighborhood Name], see the <a href="/living-in-[city-slug]-oregon#dining">[City Name] dining and shopping guide</a>.</p>
+
+  <div class="back-to-top">
+    <a href="#top">
+      <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+      Back to top
+    </a>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     F. PARKS AND TRAILS (CONDITIONAL)
+     DELETE THIS ENTIRE SECTION if Phase 1 did not confirm
+     direct neighborhood access to a park, trail, or greenspace.
+     In section E, note the nearest park and drive time instead.
+     ============================================================ -->
+<section class="sh-section" id="parks">
+  <span class="section-label">Parks &amp; Trails</span>
+  <h2>Outdoor Access from [Neighborhood Name]</h2>
+  <hr class="gold-rule" />
+
+  <div class="img-wrap">
+    <figure class="editorial-img" data-photo-id="trail-or-park">
+      <div class="img-placeholder">
+        <svg class="ph-icon" width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5">
+          <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/>
+        </svg>
+        <span class="ph-label">Photo Needed</span>
+        <span class="ph-note">Direct-access park or trail entrance closest to [Neighborhood Name] streets. Show the actual access point, not a general park shot.</span>
+      </div>
+      <figcaption>[Park or Trail Name] &mdash; [City Name], Oregon</figcaption>
+    </figure>
+    <div class="img-wrap-text">
+
+      <div class="trail-stats-compact">
+        <div class="trail-stat-compact">
+          <span class="stat-value">[Distance]</span>
+          <span class="stat-label">Trail Length</span>
+        </div>
+        <div class="trail-stat-compact">
+          <span class="stat-value">[Surface]</span>
+          <span class="stat-label">Trail Surface</span>
+        </div>
+        <div class="trail-stat-compact">
+          <span class="stat-value">[Access]</span>
+          <span class="stat-label">Nearest Entry</span>
+        </div>
+      </div>
+
+      <p>[Detailed description of this park or trail using Phase 1 physical research. Name the specific access point closest to this neighborhood's streets. Describe what residents see and experience from that access point. What time of year is it best? Who uses it? What does the trailhead look like in morning light?]</p>
+      <p><a href="[parks dept URL]" target="_blank" rel="noopener">Park details and trail map &rarr;</a></p>
+    </div>
+  </div>
+
+  <div class="back-to-top">
+    <a href="#top">
+      <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+      Back to top
+    </a>
+  </div>
+</section>
+<!-- END CONDITIONAL SECTION F -->
+
+
+<!-- ============================================================
+     G. NEIGHBORHOOD CHARACTER AND STREET LIFE
+     Always present. This is observational content only someone
+     with real local knowledge can write accurately.
+     ============================================================ -->
+<section class="sh-section" id="character">
+  <span class="section-label">Street Character</span>
+  <h2>What [Neighborhood Name] Actually Looks and Feels Like</h2>
+  <hr class="gold-rule" />
+  <p>[Opening paragraph: the overall impression of the neighborhood on first visit and how it changes once you know it. Ground this in Phase 1 physical research.]</p>
+
+  <div class="character-grid">
+
+    <div class="character-item">
+      <span class="character-item-label">Lots and Spacing</span>
+      <p>[Lot sizes, setbacks, how far homes sit from each other, whether there is genuine privacy between homes or a denser feel.]</p>
+    </div>
+
+    <div class="character-item">
+      <span class="character-item-label">Streets</span>
+      <p>[Quiet residential, cut-through routes, cul-de-sac clusters, dead ends, or a grid. What the traffic pattern actually feels like living here.]</p>
+    </div>
+
+    <div class="character-item">
+      <span class="character-item-label">Sidewalks and Walking</span>
+      <p>[Sidewalk presence, condition, width. Whether residents walk to school or around the neighborhood regularly. Whether kids play in front yards or on streets.]</p>
+    </div>
+
+    <div class="character-item">
+      <span class="character-item-label">Tree Canopy</span>
+      <p>[Mature trees creating a canopy feeling, newer development with young trees, open and exposed, mixed. What season does the neighborhood look best?]</p>
+    </div>
+
+    <div class="character-item">
+      <span class="character-item-label">Terrain</span>
+      <p>[Flat, gently rolling, elevated with views, canyon edges, ridge position. What does standing in a typical driveway feel like?]</p>
+    </div>
+
+    <div class="character-item">
+      <span class="character-item-label">Garages and Parking</span>
+      <p>[Attached two-car standard, tandem, RV parking common on some streets, street parking availability, whether garages dominate the street face.]</p>
+    </div>
+
+  </div>
+
+  <p>[Closing paragraph: the feeling of the neighborhood across the day. Morning, after school, evenings. What does the social life of the streets look like?]</p>
+
+  <div class="back-to-top">
+    <a href="#top">
+      <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+      Back to top
+    </a>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     H. COMMUNITY LIFE (CONDITIONAL)
+     DELETE THIS ENTIRE SECTION if Phase 1 did not confirm
+     a genuine HOA amenity, community pool, neighborhood
+     association, farmers market, or regular neighborhood event.
+     Do not invent community life that does not exist.
+     ============================================================ -->
+<section class="sh-section" id="community">
+  <span class="section-label">Community</span>
+  <h2>Community Life in [Neighborhood Name]</h2>
+  <hr class="gold-rule" />
+  <p>[Opening: what gives this neighborhood a social identity beyond the physical streets. Is there infrastructure that brings residents together?]</p>
+
+  <p>[Description of the HOA amenity, pool, association, market, or event. What it is, when it happens or what it provides, who it draws, what it says about how residents relate to each other.]</p>
+
+  <p><a href="[HOA or community association URL]" target="_blank" rel="noopener">[HOA or association name] &rarr;</a></p>
+
+  <div class="back-to-top">
+    <a href="#top">
+      <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+      Back to top
+    </a>
+  </div>
+</section>
+<!-- END CONDITIONAL SECTION H -->
+
+
+<!-- ============================================================
+     I. HOW THIS NEIGHBORHOOD COMPARES
+     Research which neighborhoods buyers actually cross-shop.
+     Link to neighboring neighborhood guide pages only if
+     those pages exist in the SEO spreadsheet.
+     ============================================================ -->
+<section class="sh-section" id="compare">
+  <span class="section-label">How It Compares</span>
+  <h2>[Neighborhood Name] vs. Nearby Neighborhoods</h2>
+  <hr class="gold-rule" />
+  <p>[One to two sentences identifying which neighborhoods buyers actually compare this one against and briefly why those are the relevant comparisons for this buyer profile.]</p>
+
+  <div class="nbhd-compare">
+    <table class="nbhd-compare-table">
+      <thead>
+        <tr>
+          <th>Factor</th>
+          <th class="featured">[This Neighborhood]</th>
+          <th>[Neighbor 1]</th>
+          <th>[Neighbor 2]</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Price Range</td>
+          <td class="featured">$[XXX]K &ndash; $[XXX]K</td>
+          <td>$[XXX]K &ndash; $[XXX]K</td>
+          <td>$[XXX]K &ndash; $[XXX]K</td>
+        </tr>
+        <tr>
+          <td>Home Age</td>
+          <td class="featured">[Era]</td>
+          <td>[Era]</td>
+          <td>[Era]</td>
+        </tr>
+        <tr>
+          <td>Walkability</td>
+          <td class="featured">[Description]</td>
+          <td>[Description]</td>
+          <td>[Description]</td>
+        </tr>
+        <tr>
+          <td>Direct Park Access</td>
+          <td class="featured">[Yes — Name / No]</td>
+          <td>[Yes — Name / No]</td>
+          <td>[Yes — Name / No]</td>
+        </tr>
+        <tr>
+          <td>Street Feel</td>
+          <td class="featured">[Quiet / Busy / Cul-de-sac]</td>
+          <td>[Description]</td>
+          <td>[Description]</td>
+        </tr>
+        <tr>
+          <td>Best Suited For</td>
+          <td class="featured">[3 to 5 word buyer profile]</td>
+          <td>[Profile]</td>
+          <td>[Profile]</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>[One honest paragraph on what the decision usually comes down to between these neighborhoods. Specific. No hedging. No naming neighborhoods in a comparative way that could read as steering.]</p>
+
+  <!-- Link to neighboring neighborhood guides only if pages exist -->
+  <p>
+    <a href="/neighborhoods/[neighbor-1-slug]">[Neighbor 1] neighborhood guide &rarr;</a>
+    &nbsp;|&nbsp;
+    <a href="/neighborhoods/[neighbor-2-slug]">[Neighbor 2] neighborhood guide &rarr;</a>
+  </p>
+
+  <div class="back-to-top">
+    <a href="#top">
+      <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+      Back to top
+    </a>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     J. JOE'S TAKE — TWO PARAGRAPHS ONLY
+     ============================================================ -->
+<section class="sh-section" id="joes-take">
+
+  <div class="joes-take">
+    <span class="joes-take-label">Joe's Take</span>
+    <h3>My Honest Read on [Neighborhood Name]</h3>
+
+    <p>[Paragraph 1: one specific local observation that only someone who has shown homes in this neighborhood would know. A price pattern on a particular street, a school boundary nuance that changes a home's value, a view that only exists from one side of the ridge, a detail that surprises buyers once they start walking the streets. First person. Specific. No sentence here should be possible to write without having actually been here.]</p>
+
+    <p>[Paragraph 2: who this neighborhood is genuinely right for. Then one candid sentence about who might be better served looking at an adjacent neighborhood, framed entirely around lifestyle fit. Example: "If being able to walk to coffee in the morning matters more than lot size, you will likely be happier one neighborhood over." No neighborhood names in the candid sentence. Close with a soft observation, not an invitation to call.]</p>
+
+    <div class="joes-signature">
+      Joe Saling &mdash; Saling Homes at eXp Realty &mdash; (503) 910-7364
+    </div>
+  </div>
+
+  <div class="back-to-top">
+    <a href="#top">
+      <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+      Back to top
+    </a>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     K. START YOUR SEARCH CTA
+     ============================================================ -->
+<div class="search-cta sh-dark-section">
+  <h3>Ready to See [Neighborhood Name]?</h3>
+  <p>[One sentence in Joe's voice. An invitation, not a pressure statement. Something specific to this neighborhood.]</p>
+
+  <div class="search-links">
+    <a class="btn-primary" href="/listing/homes-for-sale/[city-slug]">Browse [Neighborhood Name] Listings</a>
+    <a class="btn-secondary" href="/listing/open-house/[city-slug]">Open Houses</a>
+    <a class="btn-secondary" href="/listing/price-reduced/[city-slug]">Price Reduced</a>
+  </div>
+
+  <p class="search-cta-contact">Want personalized guidance? <a href="/contact">Start a conversation with Joe &rarr;</a></p>
+</div>
+
+
+<!-- ============================================================
+     SITE-WIDE LINK BLOCK
+     Tier 1: neighborhood and city-specific links
+     Tier 2: site-wide fixed links — same on every page
+     ============================================================ -->
+<div class="sh-link-block">
+  <h3>Explore More on SellingPDXHomes.com</h3>
+  <hr class="link-block-rule" />
+
+  <div class="link-block-tier">
+    <span class="link-block-tier-label">[Neighborhood Name] and [City Name]</span>
+    <div class="link-block-grid">
+      <a class="link-block-item featured" href="/listing/homes-for-sale/[city-slug]">Homes for Sale in [Neighborhood Name]</a>
+      <a class="link-block-item" href="/living-in-[city-slug]-oregon">[City Name] City Guide</a>
+      <a class="link-block-item" href="/[city-slug]_snapshot">[City Name] Market Snapshot</a>
+      <a class="link-block-item" href="/listing/open-house/[city-slug]">Open Houses in [City Name]</a>
+      <!-- Add neighboring neighborhood guide links from SEO spreadsheet here -->
+      <!-- Add any relevant blog post links here -->
+    </div>
+  </div>
+
+  <div class="link-block-tier">
+    <span class="link-block-tier-label">Buyer Resources</span>
+    <div class="link-block-grid">
+      <a class="link-block-item" href="/resources">Buyer's Guide</a>
+      <a class="link-block-item" href="/home-buying-process">How It Works</a>
+      <a class="link-block-item" href="/sell">Home Valuation</a>
+      <a class="link-block-item" href="/blog">Market Updates</a>
+      <a class="link-block-item" href="/cities">Explore All Communities</a>
+      <a class="link-block-item" href="/contact">Contact Joe</a>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ============================================================
+     FOOTER NAVIGATION BAR
+     Same on every page — do not alter
+     ============================================================ -->
+<nav class="sh-footer-nav" aria-label="Footer navigation">
+  <a href="/cities">Communities</a>
+  <a href="/resources">Buyer Resources</a>
+  <a href="/sell">Sell Your Home</a>
+  <a href="/blog">Market Updates</a>
+  <a href="/home-buying-process">How It Works</a>
+  <a href="/contact">Contact Joe</a>
+  <a href="https://www.sellingpdxhomes.com">SellingPDXHomes.com</a>
+</nav>
+
+
+<!-- ============================================================
+     EHO BAR
+     Required on every page. All 7 protected classes named.
+     Do not alter the legal text.
+     ============================================================ -->
+<div class="eho-bar">
+  <div class="eho-logo">
+    <svg width="48" height="48" viewbox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="48" height="48" fill="#767676" rx="2"/>
+      <path d="M24 8L6 22h4v18h28V22h4L24 8z" fill="white"/>
+      <path d="M20 40v-12h8v12" fill="#767676"/>
+      <rect x="14" y="26" width="6" height="6" fill="white"/>
+      <rect x="28" y="26" width="6" height="6" fill="white"/>
+    </svg>
+  </div>
+  <p class="eho-text">
+    <strong>Equal Housing Opportunity.</strong> Saling Homes at eXp Realty is committed to compliance with all federal, state, and local fair housing laws. We do not discriminate on the basis of race, color, religion, sex, handicap, familial status, or national origin in the sale, rental, or financing of housing. &copy; [Year] Joe Saling &mdash; Saling Homes at eXp Realty &mdash; <a href="https://www.sellingpdxhomes.com">www.sellingpdxhomes.com</a>
+  </p>
+</div>
+
+
+<!-- ============================================================
+     END OF PAGE BODY
+     ============================================================ -->
+</div><!-- /.sh-guide -->

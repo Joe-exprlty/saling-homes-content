@@ -1,0 +1,41 @@
+EDITORIAL LINKING MAP: What Every City Guide & Blog Post Should Link To,,,,,,,,,
+"Your navigation already connects IDX pages to each other (listings, condos, open houses, snapshots). This map covers the EDITORIAL layer: what links to manually include when writing city guides, blog posts, and neighborhood guides in Marblism or the Blog Project. Use this as a lookup table every time you create or update content.",,,,,,,,,
+City,City Guide Hub,Market Snapshot,IDX Listings Page,Open House Page,Blog Posts About This City,Neighbor City Guides (cross-link),Neighborhood Guides,Related Blog Posts (non-city-specific),Status
+Tigard,https://www.sellingpdxhomes.com/living-in-tigard-oregon,https://www.sellingpdxhomes.com/tigard_snapshot,https://www.sellingpdxhomes.com/listing/single-family-home/tigard,https://www.sellingpdxhomes.com/listing/open-house/tigard,"Moving to Tigard
+From Intel to Nike (V1)","Tualatin, Beaverton, Lake Oswego, Sherwood","(none yet - Bull Mountain, Metzger, Summerlake planned)","Market Update (category URL)
+Buyer/Seller Balance Flip
+The $23,000 January Advantage",Live
+Tualatin,https://www.sellingpdxhomes.com/living-in-tualatin-oregon,https://www.sellingpdxhomes.com/tualatin_snapshot,https://www.sellingpdxhomes.com/listing/single-family-home/tualatin,https://www.sellingpdxhomes.com/listing/open-house/tualatin,"Moving to Tualatin
+Single Level Homes Tualatin
+From Intel to Nike (V1)","Tigard, Sherwood, Lake Oswego, Wilsonville",(none yet),"Market Update (category URL)
+Downsize/Rightsize Your Life",Planned
+Beaverton,https://www.sellingpdxhomes.com/living-in-beaverton-oregon,https://www.sellingpdxhomes.com/beaverton_snapshot,https://www.sellingpdxhomes.com/listing/single-family-home/beaverton,https://www.sellingpdxhomes.com/listing/open-house/beaverton,"Beaverton Real Estate Guide
+Open Houses Beaverton (planned)","Hillsboro, Tigard, Aloha, Portland (SW)","(none yet - Cedar Hills, Cedar Mill, Aloha border planned)","Market Update (category URL)
+Winning Offer Strategies",Planned
+Lake Oswego,https://www.sellingpdxhomes.com/living-in-lake-oswego-oregon,https://www.sellingpdxhomes.com/lake_oswego_snapshot,https://www.sellingpdxhomes.com/listing/single-family-home/lake-oswego,https://www.sellingpdxhomes.com/listing/open-house/lake-oswego,Lake Oswego Lifestyle,"West Linn, Tigard, Tualatin, Portland (SW)","(none yet - First Addition, Mountain Park, Lake Grove planned)","Market Update (category URL)
+Why Consider Condos?
+Mortgage vs Ownership Costs",Planned
+Hillsboro,https://www.sellingpdxhomes.com/living-in-hillsboro-oregon,https://www.sellingpdxhomes.com/hillsboro_snapshot,https://www.sellingpdxhomes.com/listing/single-family-home/hillsboro,https://www.sellingpdxhomes.com/listing/open-house/hillsboro,Moving to Hillsboro,"Beaverton, Aloha, Forest Grove","(none yet - Orenco, Tanasbourne, Witch Hazel planned)","Market Update (category URL)
+From Intel to Nike (V1)",Planned
+West Linn,https://www.sellingpdxhomes.com/living-in-west-linn-oregon,https://www.sellingpdxhomes.com/west_linn_snapshot,https://www.sellingpdxhomes.com/listing/single-family-home/west-linn,https://www.sellingpdxhomes.com/listing/open-house/west-linn,West Linn Guide,"Lake Oswego, Oregon City, Tualatin","(none yet - Willamette, Bolton, Sunset planned)","Market Update (category URL)
+7 Questions Before Moving",Planned
+Sherwood,https://www.sellingpdxhomes.com/living-in-sherwood-oregon,https://www.sellingpdxhomes.com/sherwood_snapshot,https://www.sellingpdxhomes.com/listing/single-family-home/sherwood,https://www.sellingpdxhomes.com/listing/open-house/sherwood,Discover Sherwood,"Tualatin, Tigard, Newberg, Wilsonville",(none yet),"Market Update (category URL)
+Multigenerational Home Guide",Planned
+Oregon City,https://www.sellingpdxhomes.com/living-in-oregon-city-oregon,https://www.sellingpdxhomes.com/oregon_city_snapshot,https://www.sellingpdxhomes.com/listing/single-family-home/oregon-city,https://www.sellingpdxhomes.com/listing/open-house/oregon-city,(none yet),"West Linn, Gladstone, Milwaukie, Clackamas",(none yet),Market Update (category URL),Planned
+Happy Valley,https://www.sellingpdxhomes.com/living-in-happy-valley-oregon,https://www.sellingpdxhomes.com/happy_valley_snapshot,https://www.sellingpdxhomes.com/listing/single-family-home/happy-valley,https://www.sellingpdxhomes.com/listing/open-house/happy-valley,(none yet),"Clackamas, Damascus, Milwaukie, Gresham",(none yet),Market Update (category URL),Planned
+Milwaukie,https://www.sellingpdxhomes.com/living-in-milwaukie-oregon,(no snapshot page),https://www.sellingpdxhomes.com/listing/single-family-home/milwaukie,https://www.sellingpdxhomes.com/listing/open-house/milwaukie,Discover Milwaukie,"Gladstone, Oregon City, Portland (SE), Clackamas",(none yet),Market Update (category URL),Planned
+Gladstone,https://www.sellingpdxhomes.com/living-in-gladstone-oregon,https://www.sellingpdxhomes.com/gladstone_snapshot,https://www.sellingpdxhomes.com/listing/single-family-home/gladstone,(no open house page),Discover Gladstone,"Milwaukie, Oregon City, Clackamas",(none yet),Market Update (category URL),Planned
+Clackamas,https://www.sellingpdxhomes.com/living-in-clackamas-oregon,https://www.sellingpdxhomes.com/clackamas_snapshot,https://www.sellingpdxhomes.com/listing/single-family-home/clackamas,https://www.sellingpdxhomes.com/listing/open-house/clackamas,(none yet),"Happy Valley, Milwaukie, Oregon City",(none yet),Market Update (category URL),Planned
+Gresham,https://www.sellingpdxhomes.com/living-in-gresham-oregon,(no snapshot page),https://www.sellingpdxhomes.com/listing/single-family-home/gresham,https://www.sellingpdxhomes.com/listing/open-house/gresham,(none yet),"Happy Valley, Troutdale, Fairview, Portland (E)",(none yet),Market Update (category URL),Planned
+Aloha,https://www.sellingpdxhomes.com/living-in-aloha-oregon,(no snapshot page),(no dedicated IDX page),(no open house page),(none yet),"Beaverton, Hillsboro",(none yet),Market Update (category URL),Planned
+Forest Grove,https://www.sellingpdxhomes.com/living-in-forest-grove-oregon,https://www.sellingpdxhomes.com/forest_grove_snapshot,(no SFH page - luxury only),https://www.sellingpdxhomes.com/listing/open-house/forest-grove,(none yet),"Hillsboro, Cornelius",(none yet),Market Update (category URL),Planned
+UNIVERSAL LINKS (include in EVERY editorial piece),,,,,,,,,
+Resource,URL,When to Link,,,,,,,
+Market Update Category,https://www.sellingpdxhomes.com/blog?categoryId=57180,Always shows newest market report. Use this instead of linking to individual monthly posts.,,,,,,,
+Home Buyer Guide,https://www.sellingpdxhomes.com/home-buyers-guide,Link from any buyer-focused content. Lead magnet capture.,,,,,,,
+Home Seller Guide,https://www.sellingpdxhomes.com/seller-guide,Link from any seller-focused content. Lead magnet capture.,,,,,,,
+Home Valuation,https://www.sellingpdxhomes.com/evaluation,Link from seller content and market updates. Conversion page.,,,,,,,
+Contact Page,https://www.sellingpdxhomes.com/contact,"Soft CTA destination. ""When you are ready, I am here.""",,,,,,,
+Downsizing Hub,https://www.sellingpdxhomes.com/downsizing,Link from downsizing/55+ content.,,,,,,,
+Mortgage Calculator,https://www.sellingpdxhomes.com/mortgage-copy,Link from buyer education and affordability content.,,,,,,,
+Downsizing Guide,https://www.sellingpdxhomes.com/downsizing-guide,Lead magnet for downsizer/55+ content.,,,,,,,

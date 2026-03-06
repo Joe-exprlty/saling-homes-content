@@ -1,0 +1,30 @@
+BLOG CATEGORY REFERENCE & REASSIGNMENT MAP,,,,,,
+11 active blog categories with Lofty IDs and evergreen URLs for backlinks. Bottom section shows category consolidation actions for Cowork. Use category URLs (not individual post URLs) when linking from city guides.,,,,,,
+Category Name,Lofty Category ID,Evergreen URL,Status,Post Count,Use For Backlinks When...,SEO Notes
+Buying a Home,21716,https://www.sellingpdxhomes.com/blog?categoryId=21716,ACTIVE,20,"City guides, neighborhood guides referencing buyer tips or process",Strongest buyer category. Cross-tag with Home Buying Process or Mortgage Info.
+Home Buying Process,21717,https://www.sellingpdxhomes.com/blog?categoryId=21717,ACTIVE,5,"Step-by-step process content, timelines, what to expect",Supplements Buying a Home with process-specific content. Good for first-time buyer SEO.
+Mortgage Information,21718,https://www.sellingpdxhomes.com/blog?categoryId=21718,ACTIVE,4,"Rates, financing strategies, mortgage-specific education",Cross-tag mortgage posts with Buying a Home for dual visibility.
+Selling Your Home,21714,https://www.sellingpdxhomes.com/blog?categoryId=21714,ACTIVE,10,"Listing prep, staging, pricing, seller strategy",Pairs with home valuation page for seller lead capture.
+Increasing Your Homes Value,21720,https://www.sellingpdxhomes.com/blog?categoryId=21720,ACTIVE,4,"ROI projects, renovations, design trends, value-add improvements",Cross-tag with Selling Your Home. Good for homeowner + seller audiences.
+Market Update,57180,https://www.sellingpdxhomes.com/blog?categoryId=57180,ACTIVE,19,REPLACES all dated market report links. Always shows newest first.,Evergreen backlink target. Never link to individual monthly reports from guides.
+Community Page,22424,https://www.sellingpdxhomes.com/blog?categoryId=22424,ACTIVE,14,Cross-linking between city guides and blog-format community posts,"Consider renaming to ""Portland Neighborhoods"" for stronger SEO signal."
+Homeownership,21721,https://www.sellingpdxhomes.com/blog?categoryId=21721,ACTIVE,8,"Post-purchase: tax tips, gifts, moving tips, general ownership content",Absorbed Tax Savings + Gift Ideas. Growing category for retention content.
+Home Maintenance,58416,https://www.sellingpdxhomes.com/blog?categoryId=58416,ACTIVE,0,"Seasonal checklists, Portland weatherproofing, repairs, upkeep",NEW CATEGORY. Create in Lofty before assigning posts. Strong seasonal content engine.
+Downsizing,37278,https://www.sellingpdxhomes.com/blog?categoryId=37278,ACTIVE,2,"Downsizing landing pages, 55+ community pages, single-level home listings",Small but strategic. Supports entire downsizing landing page cluster.
+Real Estate News,21713,https://www.sellingpdxhomes.com/blog?categoryId=21713,ACTIVE,9,"Industry commentary, affordability data, market trend pieces (not monthly reports)",Differentiates opinion/analysis from raw market data in Market Update.
+CATEGORY REASSIGNMENT MAP FOR COWORK,,,,,,
+Old Category,Old Category ID,Action,New Category,New Category ID,Posts to Move,Notes
+Market Analysis,58127,DONE,Market Update,57180,2,"Recategorize 2 posts into Market Update. Fix typo (""Analaysis""). DELETED."
+Tax Savings,42119,DONE,Homeownership,21721,3,Recategorize 3 posts into Homeownership. DELETED.
+Gift Ideas,21719,DONE,Homeownership,21721,2,Recategorize 2 posts into Homeownership. DELETED.
+(new),-,DONE,Home Maintenance,58416,0,Created in Lofty. Category ID: 58416. Ready for posts.
+Buying a Home,21716,KEEP,Buying a Home,20,13,No change. Cross-tag posts with Home Buying Process and Mortgage Info.
+Home Buying Process,21717,KEEP,Home Buying Process,5,4,No change. Use as secondary tag on buyer process posts.
+Mortgage Information,21718,KEEP,Mortgage Information,4,4,No change. Use as secondary tag on mortgage-focused posts.
+Selling Your Home,21714,KEEP,Selling Your Home,10,13,No change. Cross-tag with Increasing Your Homes Value.
+Increasing Your Homes Value,21720,KEEP,Increasing Your Homes Value,4,3,No change. Use as secondary tag on value/ROI posts.
+Market Update,57180,KEEP,Market Update,19,14+,Absorbs Market Analysis posts. Primary backlink target.
+Community Page,22424,KEEP,Community Page,14,9,"Consider renaming to ""Portland Neighborhoods"" in Lofty."
+Homeownership,21721,KEEP,Homeownership,8,2+,Absorbs Tax Savings + Gift Ideas posts. Will grow to ~7.
+Downsizing,37278,KEEP,Downsizing,2,2,No change. Strategic category for landing page cluster.
+Real Estate News,21713,KEEP,Real Estate News,9,6,No change. Cross-tag annual reports with Market Update.
