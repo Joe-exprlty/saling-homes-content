@@ -12,8 +12,8 @@ This file is the single source of truth for the Saling Homes content system. Eve
 |-----------|---------|--------------|--------|
 | SH-Master-Master | v1.2 | March 2026 | Current |
 | SH-Blog-Master | v1.3 | February 2026 | Current |
-| SH-Community-Guide-Master | v3.4 | March 2026 | Current |
-| SH-Community-Guide-Template | v1.4 | March 2026 | Current |
+| SH-Community-Guide-Master | v3.5 | March 2026 | Current |
+| SH-Community-Guide-Template | v1.5 | March 2026 | Current |
 | SH-Neighborhood-Guide-Master | v1.1 | February 2026 | Current |
 | SH-Neighborhood-Guide-Template | v1.0 | February 2026 | Current |
 | SH-Market-Report-Master | v1.2 | March 2026 | Current |
@@ -34,6 +34,7 @@ All files are stored in the SH Master Files folder in Google Drive (folder ID: 1
 | saling-homes-brand-guide.docx | Source of truth for colors, fonts, design elements | Content System HQ + Google Drive |
 | saling-homes-tone-positioning.docx | Source of truth for voice, forbidden words, CTA language | Content System HQ + Google Drive |
 | Sellingpdxhomes_SEO_Complete.csv | URL validation for all internal links. Required in every content project | All five projects + Google Drive |
+| Lofty-Listing-Search-URL-Reference.md | URL construction guide for condition-filtered city search pages | GitHub repo reference/ folder + Google Drive |
 | VERSION-LOG.md (this file) | Single source of truth for current versions, file locations, and change history | GitHub repo + Google Drive |
 
 ---
@@ -52,11 +53,13 @@ All files are stored in the SH Master Files folder in Google Drive (folder ID: 1
 | SH-Community-Guide-Master | v3.2 | Mar 2026 | Nav restored after v3.1 removal. Bullet suppression CSS added (four paths). |
 | SH-Community-Guide-Master | v3.3 | Mar 2026 | Dining section standard (14 spots, 6/3/2/1/2 category breakdown). Collapsible content sections. Listing search grid added. |
 | SH-Community-Guide-Master | v3.4 | Mar 2026 | Button color restored to brand gold. Nav fix/release script replaces position:sticky. btn-secondary ghost button component added. |
+| SH-Community-Guide-Master | v3.5 | Mar 2026 | Pre-GO output block defined: SEO suite, image briefs with slot-specific dimensions and Phase 1-determined count, SNS image brief, neighborhood spoke list, price range tiers with encoded Lofty URLs. Post-GO output block defined: HTML, schema block, internal and external link table. Meta title rule updated to 60-char clean snippet with 70-75 char total limit. Image brief format standardized. Neighborhood count raised to 10-13. Lofty search URL construction rule added to Linking Rules. Schema placement corrected from head injection to Lofty embed block. |
 | SH-Community-Guide-Template | v1.0 | Feb 2026 | Initial release. |
 | SH-Community-Guide-Template | v1.1 | Feb 2026 | Full Mobile Design Standards added. |
 | SH-Community-Guide-Template | v1.2 | Mar 2026 | Seven layout brief changes applied: hero CTA button, nav trimmed to 7 items, comparison table moved, mid-page CTA added, Joe's Take contact block removed, Explore More restyled, mobile improvements. |
 | SH-Community-Guide-Template | v1.3 | Mar 2026 | Collapsible sections, listing search grid, dining expand block, btn-secondary component, nav is-fixed script. |
 | SH-Community-Guide-Template | v1.4 | Mar 2026 | Full placeholderization from Tigard v2 production baseline. Button colors restored to gold. Nav fix/release script. All Marblism images replaced with placeholder SVGs. |
+| SH-Community-Guide-Template | v1.5 | Mar 2026 | Schema comment block updated: removed "HEAD INJECTION FIELD" reference, replaced with "LOFTY EMBED BLOCK AT TOP OF PAGE". |
 | SH-Neighborhood-Guide-Master | v1.0 | Feb 2026 | Initial release. |
 | SH-Neighborhood-Guide-Master | v1.1 | Feb 2026 | Full Mobile Design Standards added. City guide link format locked to /living-in-[city]-oregon. |
 | SH-Market-Report-Master | v1.0 | Feb 2026 | Initial release. |
@@ -69,6 +72,7 @@ All files are stored in the SH Master Files folder in Google Drive (folder ID: 1
 | SH-Master-Master | v1.0 | Mar 2026 | Initial release. Cross-project governing file. |
 | SH-Master-Master | v1.1 | Mar 2026 | Removed hardcoded version numbers. Added Version Log check instruction. |
 | SH-Master-Master | v1.2 | Mar 2026 | Market Report Template and Brief references added. Drive startup instruction updated. |
+| Lofty-Listing-Search-URL-Reference | v1.0 | Mar 2026 | Initial release. Base URL structure, full condition object reference, value format rules, property types, listing statuses, keyword patterns, common search examples, encoded/decoded example. |
 | All System Prompts | static | Mar 2026 | Removed version numbers. Replaced with Drive startup sequence that reads Version Log for current master file versions. |
 
 ---
